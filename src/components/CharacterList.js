@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import Character from './character.js';
-// import { getResults } from '../Actions.js';
 
 class CharacterList extends Component {
 	constructor(props) {
@@ -17,7 +16,6 @@ class CharacterList extends Component {
 		this.setState({ selected: index })
 	}
 	componentWillMount() {
-		// const newState = this.state;
 		axios.get('https://swapi.co/api/people/').then((res) => {
 			this.setState({ characters: res.data.results });			
 		});

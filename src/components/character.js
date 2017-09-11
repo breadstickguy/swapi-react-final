@@ -10,13 +10,16 @@ const Character = ({ data, onClick, isOpen, index}) => (
 	<div className="character_container">
 		<h2>My name is {data.name}</h2>
 		<button onClick={() => onClick(index)}>Click here for my details!</button>
-		{isOpen && <div>I am open!</div>}
-		{/* {Object.keys(this.props.data).map((key) => { return <p>{key}: {this.props.data[key]}</p>})} 
-		<Films data={this.props.data.films} />
-		<Planets data={this.props.data.homeworld} />
-		<Species data={this.props.data.species} />
-		<Vehicles data={this.props.data.vehicles} />
-		<Starships data={this.props.data.starships} /> */}
+		{isOpen && <div>I am open!
+		
+		<Films data={data.films} />
+		<Planets data={data.homeworld} />
+		<Species data={data.species} />
+		<Vehicles data={data.vehicles} />
+		<Starships data={data.starships} /> 
+		</div> }
+
+	{/* {Object.keys(this.props.data).map((key) => { return <p>{key}: {this.props.data[key]}</p>})} */}
 	</div>
 );
 export default Character;
