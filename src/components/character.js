@@ -24,8 +24,6 @@ const Character = ({ data, onClick, isOpen, index}) => (
 		<Vehicles data={data.vehicles} />
 		<Starships data={data.starships} /> 
 		</div> }
-
-	{/* {Object.keys(this.props.data).map((key) => { return <p>{key}: {this.props.data[key]}</p>})} */}
 	</div>
 );
 export default Character;

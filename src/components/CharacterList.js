@@ -13,7 +13,8 @@ class CharacterList extends Component {
 		this.onClick = this.onClick.bind(this);
 	}
 	onClick(index) {
-		this.setState({ selected: index })
+		this.setState({ selected: index });
+
 	}
 	componentWillMount() {
 		axios.get('https://swapi.co/api/people/').then((res) => {
