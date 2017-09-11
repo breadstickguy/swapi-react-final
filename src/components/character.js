@@ -15,8 +15,8 @@ const Character = ({ data, onClick, isOpen, index}) => (
 		<p>My eyes are: {data.eye_color}</p>
 		<p>I am a : {data.gender}</p>
 		<p>My hair is: {data.hair_color}</p>
-		<p>I am {data.height} units tall!</p>
-		<p>I have {data.mass} units of mass!</p>
+		<p>I am {data.height} cm tall!</p>
+		<p>I weigh {data.mass}kg!</p>
 		<p>My skin is: {data.skin_color}</p>
 		<Films data={data.films} />
 		<Planets data={data.homeworld} />
