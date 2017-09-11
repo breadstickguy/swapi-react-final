@@ -1,15 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Starships extends Component {
-	render() {
-		console.log('Starships props', this.props);
-		return(
+const Starships = (data) => (
 			<div>
-				I fly these ships: {Object.keys( this.props.data ).map( key =>  <p> { this.props.data[key] }</p> )}
+				I fly these ships: {Object.keys( data.data ).map( key =>  <p key={data.data[key]}> { data.data[key] }</p> )}
 			</div>
 			);
-	}
-
-}
 
 export default Starships;

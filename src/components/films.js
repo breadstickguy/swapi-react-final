@@ -1,15 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Films extends Component {
-	render() {
-		console.log('film props', this.props);
-		return(
+const Films = (data) => (
 			<div>
-				I was in these films: {Object.keys( this.props.data ).map( key => { return <p> { this.props.data[key] }</p>} )}
+				I was in these films: {Object.keys( data.data ).map( key => { return <p key={data.data[key]}> { data.data[key] }</p>} )}
 			</div>
 			);
-	}
-
-}
 
 export default Films;

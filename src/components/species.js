@@ -1,15 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Species extends Component {
-	render() {
-		console.log('Species props', this.props);
-		return(
+const Species = (data) => (
 			<div>
-				I am a: <p> {this.props.data} </p>
+				I am a: <p> {data.data} </p>
 			</div>
 			);
-	}
-
-}
 
 export default Species;
