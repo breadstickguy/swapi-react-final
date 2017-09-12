@@ -8,13 +8,24 @@ class CharacterList extends Component {
 		super(props);
 		this.state = {
 			characters : 'loading',
-			selected: ''
+			selected: '',
+			filmsList: ''
 		};
 		this.onClick = this.onClick.bind(this);
 	}
 	onClick(index) {
-		this.setState({ selected: index });
-
+		// console.log('index', index);
+		// console.log('this.state', this.state);
+		let thisFilms = this.state.characters[index].films;
+		const filmsList = [];
+		// console.log('thisFilms', thisFilms);
+		thisFilms.map((film) => axios.get(film).then((res) => filmsList.push(res.data.title)));
+		// console.log('filmsList',filmsList);
+		this.setState({ 
+			selected: index,
+			filmsList: filmsList
+			 });
+		// axios.get()
 	}
 	componentWillMount() {
 		axios.get('https://swapi.co/api/people/').then((res) => {
@@ -23,7 +34,8 @@ class CharacterList extends Component {
 	}
 	render() {
 		let content;
-		const { characters, selected } = this.state;
+		const { characters, selected, filmsList } = this.state;
+		console.log('filmsList', filmsList);
 		if(characters === 'loading') {
 			content = <div>loading...</div>
 		} else if(characters){
@@ -34,6 +46,7 @@ class CharacterList extends Component {
 					isOpen={(selected === index)}
 					index={index}
 					onClick={this.onClick}
+					filmsList={filmsList}
 				/>
 			))
 		}
