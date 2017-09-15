@@ -10,28 +10,26 @@ class CharacterList extends Component {
 			characters : 'loading',
 			selected: '',
 			filmsList: '',
-			homeworld: ''
+			homeworld: '',
+			species: '',
+			vehiclesList: '',
+			starshipsList: ''
 		};
 		this.onClick = this.onClick.bind(this);
 	}
 	onClick(index) {
 		// console.log('index', index);
 		// console.log('this.state', this.state);
-		let thisFilms = this.state.characters[index].films;
-		const filmsList = [];
-		
+				
 		let thisHomeworld = this.state.characters[index].homeworld;
 		axios.get(thisHomeworld).then((res) => {
-			console.log(res.data.name);
 			this.setState({
 				homeworld: res.data.name
 			})
 		});
-			// this.setState({
-			// 	characters.homeworld : res.data.name;
-			// })
-		
-		// console.log('thisFilms', thisFilms);
+
+		let thisFilms = this.state.characters[index].films;
+		const filmsList = [];
 		thisFilms.map((film) => axios.get(film).then((res) => {
 			filmsList.push(res.data.title);
 			this.setState({ 
@@ -40,8 +38,34 @@ class CharacterList extends Component {
 			});
 		}
 		));
-		// console.log('filmsList click',filmsList);
-		// axios.get()
+
+		let thisSpecies = this.state.characters[index].species;
+		axios.get(thisSpecies).then((res) => {
+			this.setState({
+				species: res.data.name
+			})
+		});		
+
+		let thisVehicles = this.state.characters[index].vehicles;
+		const vehiclesList = [];
+		thisVehicles.map((vehicle) => axios.get(vehicle).then((res) => {
+			vehiclesList.push(res.data.name);
+			this.setState({ 
+				vehiclesList: vehiclesList
+			});
+		}
+		));
+
+		let thisStarships = this.state.characters[index].starships;
+		const starshipsList = [];
+		thisStarships.map((starship) => axios.get(starship).then((res) => {
+			starshipsList.push(res.data.name);
+			this.setState({ 
+				starshipsList: starshipsList
+			});
+		}
+		));
+
 	}
 	componentWillMount() {
 		axios.get('https://swapi.co/api/people/').then((res) => {
@@ -50,8 +74,7 @@ class CharacterList extends Component {
 	}
 	render() {
 		let content;
-		const { characters, selected, filmsList, homeworld } = this.state;
-		console.log('homeworld', homeworld);
+		const { characters, selected, filmsList, homeworld, species, vehiclesList, starshipsList } = this.state;
 		// console.log('filmsList', filmsList);
 		if(characters === 'loading') {
 			content = <div>loading...</div>
@@ -65,6 +88,9 @@ class CharacterList extends Component {
 					onClick={this.onClick}
 					filmsList={filmsList}
 					homeworld={homeworld}
+					species={species}
+					vehiclesList={vehiclesList}
+					starshipsList={starshipsList}
 				/>
 			))
 		}

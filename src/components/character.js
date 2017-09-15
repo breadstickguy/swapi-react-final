@@ -6,23 +6,23 @@ import Vehicles from './vehicles.js';
 import Starships from './starships.js';
 
 
-const Character = ({ data, onClick, isOpen, index, filmsList, homeworld}) => (
+const Character = ({ data, onClick, isOpen, index, filmsList, homeworld, species, vehiclesList, starshipsList}) => (
 	<div className="character_container">
 		<h2>My name is {data.name}</h2>
 		<button onClick={() => onClick(index)}>Click here for my details!</button>
 		{isOpen && <div>
-		<p>I was born: {data.birth_year}</p>
-		<p>My eyes are: {data.eye_color}</p>
-		<p>I am a : {data.gender}</p>
-		<p>My hair is: {data.hair_color}</p>
-		<p>I am {data.height} cm tall!</p>
-		<p>I weigh {data.mass}kg!</p>
-		<p>My skin is: {data.skin_color}</p>
+		<div>I was born: {data.birth_year}</div>
+		<div>My eyes are: {data.eye_color}</div>
+		<div>I am a : {data.gender}</div>
+		<div>My hair is: {data.hair_color}</div>
+		<div>I am {data.height} cm tall!</div>
+		<div>I weigh {data.mass}kg!</div>
+		<div>My skin is: {data.skin_color}</div>
 		<Films data={filmsList} />
 		<Planets data={homeworld} />
-		<Species data={data.species} />
-		<Vehicles data={data.vehicles} />
-		<Starships data={data.starships} /> 
+		<Species data={species} />
+		<Vehicles data={vehiclesList} />
+		<Starships data={starshipsList} /> 
 		</div> }
 	</div>
 );

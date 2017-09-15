@@ -1,9 +1,11 @@
 import React from 'react';
 
-const Vehicles = (data) => (
+const Vehicles = (data) => 
+{ console.log('data', data);
+(
 			<div>
-				I like to drive: {Object.keys( data.data ).map( key => { return <p key={data.data[key]}> { data.data[key] }</p>} )}
+				I like to drive: <ul>{data.data.map((vehicle) => <li key={vehicle}> {vehicle} </li>)} </ul>
 			</div>
 			);
-
+}
 export default Vehicles;

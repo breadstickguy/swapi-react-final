@@ -2,7 +2,7 @@ import React from 'react';
 
 const Planets = (data) => (
 			<div>
-				My homeworld is: <p> {data.data} </p>
+				My homeworld is: {data.data}
 			</div>
 			);
 
