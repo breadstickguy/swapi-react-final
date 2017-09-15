@@ -9,7 +9,8 @@ class CharacterList extends Component {
 		this.state = {
 			characters : 'loading',
 			selected: '',
-			filmsList: ''
+			filmsList: '',
+			homeworld: ''
 		};
 		this.onClick = this.onClick.bind(this);
 	}
@@ -18,13 +19,28 @@ class CharacterList extends Component {
 		// console.log('this.state', this.state);
 		let thisFilms = this.state.characters[index].films;
 		const filmsList = [];
+		
+		let thisHomeworld = this.state.characters[index].homeworld;
+		axios.get(thisHomeworld).then((res) => {
+			console.log(res.data.name);
+			this.setState({
+				homeworld: res.data.name
+			})
+		});
+			// this.setState({
+			// 	characters.homeworld : res.data.name;
+			// })
+		
 		// console.log('thisFilms', thisFilms);
-		thisFilms.map((film) => axios.get(film).then((res) => filmsList.push(res.data.title)));
-		// console.log('filmsList',filmsList);
-		this.setState({ 
-			selected: index,
-			filmsList: filmsList
-			 });
+		thisFilms.map((film) => axios.get(film).then((res) => {
+			filmsList.push(res.data.title);
+			this.setState({ 
+				selected: index,
+				filmsList: filmsList
+			});
+		}
+		));
+		// console.log('filmsList click',filmsList);
 		// axios.get()
 	}
 	componentWillMount() {
@@ -34,8 +50,9 @@ class CharacterList extends Component {
 	}
 	render() {
 		let content;
-		const { characters, selected, filmsList } = this.state;
-		console.log('filmsList', filmsList);
+		const { characters, selected, filmsList, homeworld } = this.state;
+		console.log('homeworld', homeworld);
+		// console.log('filmsList', filmsList);
 		if(characters === 'loading') {
 			content = <div>loading...</div>
 		} else if(characters){
@@ -47,6 +64,7 @@ class CharacterList extends Component {
 					index={index}
 					onClick={this.onClick}
 					filmsList={filmsList}
+					homeworld={homeworld}
 				/>
 			))
 		}

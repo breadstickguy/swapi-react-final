@@ -6,7 +6,7 @@ import Vehicles from './vehicles.js';
 import Starships from './starships.js';
 
 
-const Character = ({ data, onClick, isOpen, index, filmsList}) => (
+const Character = ({ data, onClick, isOpen, index, filmsList, homeworld}) => (
 	<div className="character_container">
 		<h2>My name is {data.name}</h2>
 		<button onClick={() => onClick(index)}>Click here for my details!</button>
@@ -19,7 +19,7 @@ const Character = ({ data, onClick, isOpen, index, filmsList}) => (
 		<p>I weigh {data.mass}kg!</p>
 		<p>My skin is: {data.skin_color}</p>
 		<Films data={filmsList} />
-		<Planets data={data.homeworld} />
+		<Planets data={homeworld} />
 		<Species data={data.species} />
 		<Vehicles data={data.vehicles} />
 		<Starships data={data.starships} /> 
