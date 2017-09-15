@@ -21,8 +21,8 @@ const Character = ({ data, onClick, isOpen, index, filmsList, homeworld, species
 		<Films data={filmsList} />
 		<Planets data={homeworld} />
 		<Species data={species} />
-		<Vehicles data={vehiclesList} />
 		<Starships data={starshipsList} /> 
+		<Vehicles data={vehiclesList} />
 		</div> }
 	</div>
 );

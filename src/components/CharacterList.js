@@ -75,7 +75,7 @@ class CharacterList extends Component {
 	render() {
 		let content;
 		const { characters, selected, filmsList, homeworld, species, vehiclesList, starshipsList } = this.state;
-		// console.log('filmsList', filmsList);
+		console.log('vehiclesList', vehiclesList);
 		if(characters === 'loading') {
 			content = <div>loading...</div>
 		} else if(characters){
